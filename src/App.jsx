@@ -9,7 +9,7 @@ const App = () => {
   const [selectedDestination, setSelectedDestination] = useState("");
 
   useEffect(() => {
-    fetch("https://api.allorigins.win/raw?url=https://course-api.com/react-tours-project")
+    fetch("/api/react-tours-project")
       .then((response) => {
         if (!response.ok) throw new Error("Failed to fetch data");
         return response.json();

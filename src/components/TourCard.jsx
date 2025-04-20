@@ -4,7 +4,7 @@ const TourCard = ({ id, name, info, image, price, removeTour }) => {
   return (
     <div>
       <img src={image} alt={name} />
-      <h3>{name}</h3>
+      <h2>{name}</h2>
       <p>{info}</p>
       <p>Price: ${price}</p>
       <button onClick={() => removeTour(id)}>Not Interested</button>
