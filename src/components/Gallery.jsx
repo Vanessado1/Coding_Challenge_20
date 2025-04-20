@@ -1,53 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import TourCard from './TourCard';
+import React from "react";
+import TourCard from "./TourCard";
 
-const Gallery = ({ destination }) => {
-    const [tours, setTours] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+const Gallery = ({ tours, selectedDestination, loading, error, setTours }) => {
+  if (loading) return <p>Loading tours...</p>;
+  if (error) return <p>Error: {error}</p>;
 
-    useEffect(() => {
-        const fetchTours = async () => {
-            setLoading(true);
-            setError(null);
-            try {
-                const response = await fetch(`/api/tours?destination=${destination}`);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch tours');
-                }
-                const data = await response.json();
-                setTours(data);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
+  const filteredTours = selectedDestination
+    ? tours.filter((tour) => tour.name === selectedDestination)
+    : tours;
 
-        if (destination) {
-            fetchTours();
-        }
-    }, [destination]);
+  const handleRemoveTour = (id) => {
+    setTours((prevTours) => prevTours.filter((tour) => tour.id !== id));
+  };
 
-    if (loading) {
-        return <p>Loading tours...</p>;
-    }
-
-    if (error) {
-        return <p>Error: {error}</p>;
-    }
-
-    if (tours.length === 0) {
-        return <p>No tours available for the selected destination.</p>;
-    }
-
-    return (
-        <div className="gallery">
-            {tours.map((tour) => (
-                <TourCard key={tour.id} tour={tour} />
-            ))}
+  return (
+    <div>
+      {filteredTours.length === 0 ? (
+        <div>
+          <p>No tours left. Refresh to reload.</p>
+          <button onClick={() => window.location.reload()}>Refresh</button>
         </div>
-    );
+      ) : (
+        filteredTours.map((tour) => (
+          <TourCard key={tour.id} {...tour} removeTour={handleRemoveTour} />
+        ))
+      )}
+    </div>
+  );
 };
 
 export default Gallery;
