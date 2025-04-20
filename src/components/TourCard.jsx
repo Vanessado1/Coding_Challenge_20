@@ -2,7 +2,7 @@ import React from "react";
 
 const TourCard = ({ id, name, info, image, price, removeTour }) => {
   return (
-    <div>
+    <div className="tour-card">
       <img src={image} alt={name} />
       <h2>{name}</h2>
       <p>{info}</p>

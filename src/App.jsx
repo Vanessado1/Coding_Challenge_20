@@ -29,9 +29,10 @@ const App = () => {
   const handleFilter = (destination) => {
     setSelectedDestination(destination);
   };
-
+  
   return (
     <div>
+       <div className="app-container"></div>
       <DestinationSelector tours={tours} onFilter={handleFilter} />
       <Gallery
         tours={tours}
