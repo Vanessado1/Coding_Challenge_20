@@ -14,7 +14,7 @@ const Gallery = ({ tours, selectedDestination, loading, error, setTours }) => {
   };
 
   return (
-    <div>
+    <div className="tour-card-container">
       {filteredTours.length === 0 ? (
         <div>
           <p>No tours left. Refresh to reload.</p>
@@ -22,11 +22,20 @@ const Gallery = ({ tours, selectedDestination, loading, error, setTours }) => {
         </div>
       ) : (
         filteredTours.map((tour) => (
-          <TourCard key={tour.id} {...tour} removeTour={handleRemoveTour} />
+          <div key={tour.id}>
+            <div className="tour-card">
+              <img src={tour.image} alt={tour.name} />
+              <h2>{tour.name}</h2>
+              <p>{tour.info}</p>
+              <p>Price: ${tour.price}</p>
+              <button onClick={() => handleRemoveTour(tour.id)}>Not Interested</button>
+            </div>
+          </div>
         ))
       )}
     </div>
   );
+  
 };
 
 export default Gallery;

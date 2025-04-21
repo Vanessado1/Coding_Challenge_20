@@ -31,8 +31,8 @@ const App = () => {
   };
   
   return (
-    <div>
-       <div className="app-container"></div>
+       <div className="app-container"> 
+        <h1 className="header">Tour Selector</h1>
       <DestinationSelector tours={tours} onFilter={handleFilter} />
       <Gallery
         tours={tours}

@@ -10,6 +10,7 @@ const TourCard = ({ id, name, info, image, price, removeTour }) => {
       <button onClick={() => removeTour(id)}>Not Interested</button>
     </div>
   );
+  
 };
 
 export default TourCard;
