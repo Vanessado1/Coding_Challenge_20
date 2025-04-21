@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; // import react 
 
 const DestinationSelector = ({ tours, onFilter }) => {
   // Extract unique destinations, including "All Destinations"
@@ -8,7 +8,7 @@ const DestinationSelector = ({ tours, onFilter }) => {
     const value = event.target.value;
     onFilter(value === "All Destinations" ? "" : value); // Filter tours based on selection
   };
-
+  // return dropdown menu 
   return (
     <div className="destination-selector">
       <label htmlFor="destination-dropdown">Choose a Tour Destination:</label>

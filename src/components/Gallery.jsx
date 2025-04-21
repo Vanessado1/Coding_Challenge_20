@@ -1,5 +1,5 @@
-import React from "react";
-import TourCard from "./TourCard";
+import React from "react"; // import react
+import TourCard from "./TourCard"; // import TourCard
 
 const Gallery = ({ tours, selectedDestination, loading, error, setTours }) => {
   if (loading) return <p>Loading tours...</p>;
@@ -12,7 +12,7 @@ const Gallery = ({ tours, selectedDestination, loading, error, setTours }) => {
   const handleRemoveTour = (id) => {
     setTours((prevTours) => prevTours.filter((tour) => tour.id !== id));
   };
-
+// return TourCard
   return (
     <div className="tour-card-container">
       {filteredTours.length === 0 ? (

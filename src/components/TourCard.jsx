@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; // import react 
 
 const TourCard = ({ id, name, info, image, price, removeTour }) => {
   return (
